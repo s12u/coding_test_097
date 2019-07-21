@@ -1,7 +1,6 @@
 package com.tistory.mybstory.coding_test_097.ui.viewmodel;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
@@ -10,7 +9,6 @@ import com.tistory.mybstory.coding_test_097.data.ApiClient;
 import com.tistory.mybstory.coding_test_097.data.ApiService;
 import com.tistory.mybstory.coding_test_097.data.datasource.factory.BookDataSourceFactory;
 import com.tistory.mybstory.coding_test_097.data.model.Book;
-import com.tistory.mybstory.coding_test_097.ui.adapter.SearchResultAdapter;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -24,6 +22,7 @@ public class SecondViewModel extends QueryViewModel {
         init();
     }
 
+    // initialize paged list
     private void init() {
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Executor fetchExecutor = Executors.newFixedThreadPool(5);
@@ -38,6 +37,7 @@ public class SecondViewModel extends QueryViewModel {
 
     @Override
     protected void onCleared() {
+        // release
         super.onCleared();
     }
 

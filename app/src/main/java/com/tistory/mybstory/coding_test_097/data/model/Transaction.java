@@ -1,5 +1,8 @@
 package com.tistory.mybstory.coding_test_097.data.model;
 
+/**
+ * A Data class for transaction history.
+ */
 public class Transaction {
 
     private String title;
@@ -36,6 +39,7 @@ public class Transaction {
         this.salePrice = salePrice;
     }
 
+    // overrides equals method to custom equal comparison.
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Transaction)) {

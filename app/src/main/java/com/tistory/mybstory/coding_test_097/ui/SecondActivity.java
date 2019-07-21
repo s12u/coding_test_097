@@ -19,27 +19,30 @@ import com.tistory.mybstory.coding_test_097.ui.viewmodel.SecondViewModel;
 public class SecondActivity extends AppCompatActivity {
 
     private ActivitySecondBinding binding;
-    private SearchResultAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_second);
+        // for LiveData<PagedList<T>>
+        binding.setLifecycleOwner(this);
 
+        // query from FirstActivity
         String query = getIntent().getStringExtra("query");
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_second);
-        binding.setLifecycleOwner(this);
+        // create ViewModel with query
         binding.setViewModel(ViewModelProviders.of(this, new QueryViewModelFactory(query))
                 .get(SecondViewModel.class));
-
-        adapter = new SearchResultAdapter(SearchResultAdapter.DIFF_CALLBACK);
-        binding.setSearchResultAdapter(adapter);
+        // create & add adapter to binding
+        binding.setSearchResultAdapter(new SearchResultAdapter(SearchResultAdapter.DIFF_CALLBACK));
     }
 
+    // binding adapter for recycler view
     @BindingAdapter(value = {"android:adapter", "android:data"})
     public static <T, VH extends RecyclerView.ViewHolder> void bind(
             RecyclerView recyclerView, PagedListAdapter<T, VH> adapter, PagedList<T> data) {
         recyclerView.setAdapter(adapter);
+        // update recycler view's data from view model
         adapter.submitList(data);
     }
 }

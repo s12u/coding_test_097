@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.tistory.mybstory.coding_test_097.base.viewmodel.util.ResultHandler;
 import com.tistory.mybstory.coding_test_097.base.viewmodel.ResultViewModel;
-import com.tistory.mybstory.coding_test_097.ui.viewmodel.SecondViewModel;
+import com.tistory.mybstory.coding_test_097.base.viewmodel.util.ResultHandler;
 
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ * A Factory class for creating {@link ResultViewModel}.
+ *
+ */
 public class ResultViewModelFactory<T> implements ViewModelProvider.Factory {
 
     protected final ResultHandler<T> resultHandler;

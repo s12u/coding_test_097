@@ -1,5 +1,8 @@
 package com.tistory.mybstory.coding_test_097.data.model;
 
+/**
+ * A Data class for query metadata.
+ */
 public class Meta {
 
     private int total_count;

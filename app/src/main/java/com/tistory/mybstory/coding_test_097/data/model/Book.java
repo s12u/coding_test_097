@@ -2,6 +2,9 @@ package com.tistory.mybstory.coding_test_097.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * A Data class for Book entity.
+ */
 public class Book {
 
     @SerializedName("title")
@@ -44,14 +47,4 @@ public class Book {
     public void setSalePrice(int salePrice) {
         this.salePrice = salePrice;
     }
-
-
-    //private String url;
-    //private String isbn;
-    //private String datetime;
-    //private List<String> authors;
-    //private String puslisher;
-    //private List<String> translators;
-    //private String thumbnail;
-
 }

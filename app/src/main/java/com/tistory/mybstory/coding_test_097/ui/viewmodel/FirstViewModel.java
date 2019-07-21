@@ -17,6 +17,7 @@ import java9.util.stream.StreamSupport;
 public class FirstViewModel extends ResultViewModel<Bundle> {
 
     private int _balance = 0;
+    // observable field to notifying the balance changes
     private ObservableField<Integer> balance = new ObservableField<>(0);
     private List<Transaction> transactionHistoryList = new ArrayList<>();
 
@@ -26,9 +27,11 @@ public class FirstViewModel extends ResultViewModel<Bundle> {
 
     @Override
     protected void onCleared() {
+        // release
         super.onCleared();
     }
 
+    // callback from result handler
     @Override
     public void onResult(Bundle resultBundle) {
         String title = resultBundle.getString("result_title");
@@ -43,6 +46,7 @@ public class FirstViewModel extends ResultViewModel<Bundle> {
         return balance;
     }
 
+    // check duplicate transaction history & add to history on transaction success
     private void performTransaction(@NonNull Transaction transaction) {
         boolean hasHistory = StreamSupport.stream(transactionHistoryList)
                 .anyMatch(item -> item.equals(transaction));

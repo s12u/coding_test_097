@@ -5,12 +5,13 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.tistory.mybstory.coding_test_097.base.viewmodel.QueryViewModel;
-import com.tistory.mybstory.coding_test_097.base.viewmodel.ResultViewModel;
-import com.tistory.mybstory.coding_test_097.base.viewmodel.util.ResultHandler;
-import com.tistory.mybstory.coding_test_097.ui.viewmodel.SecondViewModel;
 
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ * A Factory class for creating {@link QueryViewModel}.
+ *
+ */
 public class QueryViewModelFactory implements ViewModelProvider.Factory {
 
     private final String query;

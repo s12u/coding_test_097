@@ -7,10 +7,16 @@ import com.tistory.mybstory.coding_test_097.data.ApiService;
 import com.tistory.mybstory.coding_test_097.data.model.Book;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
+
+/**
+ * A DataSource class that performs paging data for {@link Book}.
+ * <p>
+ *
+ */
 
 public class BookDataSource extends PageKeyedDataSource<Integer, Book> {
 
+    // TODO: place auth key to another class?
     private final String AUTH_KEY = "KakaoAK "+ "5c987a8c6d8e160fc0933fd6f4c87293";
     private final String QUERY_TARGET = "title";
 

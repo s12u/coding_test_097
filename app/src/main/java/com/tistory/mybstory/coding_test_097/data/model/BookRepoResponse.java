@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * A Data class for http response.
+ */
 public class BookRepoResponse {
 
     @SerializedName("meta")

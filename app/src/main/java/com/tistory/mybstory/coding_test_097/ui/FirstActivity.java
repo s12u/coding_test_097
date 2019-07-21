@@ -18,17 +18,13 @@ public class FirstActivity extends AppCompatActivity {
 
     static final int REQUEST_QUERY_BOOK = 1;
     private ActivityFirstBinding binding;
-    private ResultHandler<Bundle> resultHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_first);
-
-        resultHandler = new ResultHandler<>();
-
         binding.setViewModel(ViewModelProviders
-                .of(this, new ResultViewModelFactory<>(resultHandler))
+                .of(this, new ResultViewModelFactory<>(new ResultHandler<>()))
                 .get(FirstViewModel.class));
 
         binding.btnSearchBook.setOnClickListener(v -> {
@@ -44,11 +40,11 @@ public class FirstActivity extends AppCompatActivity {
         if (requestCode == REQUEST_QUERY_BOOK && resultCode == RESULT_OK) {
             // do something
             if (data != null) {
-                resultHandler.onResult(data.getExtras());
+                binding.getViewModel().getResultHandler()
+                        .onResult(data.getExtras());
             } else {
 
             }
-//            Log.e("FistActivity", "Result received : " + data.getIntExtra("result_price",0));
         }
     }
 }

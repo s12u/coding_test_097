@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel;
 import com.tistory.mybstory.coding_test_097.base.viewmodel.util.ResultHandler;
 import com.tistory.mybstory.coding_test_097.base.viewmodel.util.ResultObserver;
 
-public class ResultViewModel<T> extends ViewModel implements ResultObserver<T> {
+public abstract class ResultViewModel<T> extends ViewModel implements ResultObserver<T> {
 
     private ResultHandler<T> resultHandler;
 
@@ -21,7 +21,9 @@ public class ResultViewModel<T> extends ViewModel implements ResultObserver<T> {
     }
 
     @Override
-    public void onResult(T result) {
+    public abstract void onResult(T result);
 
+    public ResultHandler<T> getResultHandler() {
+        return resultHandler;
     }
 }

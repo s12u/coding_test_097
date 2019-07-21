@@ -1,12 +1,12 @@
 package com.tistory.mybstory.coding_test_097.data.model;
 
-public class WithdrawalHistory {
+public class Transaction {
 
     private String title;
     private int price;
     private int salePrice;
 
-    public WithdrawalHistory(String title, int price, int salePrice) {
+    public Transaction(String title, int price, int salePrice) {
         this.title = title;
         this.price = price;
         this.salePrice = salePrice;
@@ -38,11 +38,11 @@ public class WithdrawalHistory {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof WithdrawalHistory)) {
+        if (!(obj instanceof Transaction)) {
             return false;
         }
 
-        WithdrawalHistory history = (WithdrawalHistory) obj;
+        Transaction history = (Transaction) obj;
 
         return this.title.equals(history.title) &&
                 this.price == history.price &&

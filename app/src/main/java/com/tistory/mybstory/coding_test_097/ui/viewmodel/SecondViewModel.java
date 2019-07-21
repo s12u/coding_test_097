@@ -17,7 +17,6 @@ import java.util.concurrent.Executors;
 
 public class SecondViewModel extends QueryViewModel {
 
-    private SearchResultAdapter adapter;
     private LiveData<PagedList<Book>> bookListLiveData;
 
     public SecondViewModel(String query) {
@@ -35,7 +34,6 @@ public class SecondViewModel extends QueryViewModel {
         bookListLiveData = new LivePagedListBuilder<>(new BookDataSourceFactory(apiService, getQuery()), config)
                 .setFetchExecutor(fetchExecutor)
                 .build();
-        adapter = new SearchResultAdapter(SearchResultAdapter.DIFF_CALLBACK);
     }
 
     @Override
@@ -45,10 +43,6 @@ public class SecondViewModel extends QueryViewModel {
 
     public LiveData<PagedList<Book>> getBooksList() {
         return bookListLiveData;
-    }
-
-    public SearchResultAdapter getAdapter() {
-        return adapter;
     }
 
 }

@@ -8,4 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="LabelStyle" parent="Widget.MaterialComponents.TextView"/>
+
+    <style name="LabelStyle.Author">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/gray_5</item>
+    </style>
+
+    <style name="LabelStyle.Publisher">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/gray_8</item>
+    </style>
+
+
 </resources>

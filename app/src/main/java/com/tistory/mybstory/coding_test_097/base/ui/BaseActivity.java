@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class BaseActivity extends AppCompatActivity {
 
     public void hideKeyboard(View v) {
-        InputMethodManager imm = (InputMethodManager) getApplicationContext()
+        InputMethodManager imm = (InputMethodManager) v.getContext()
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm != null && v != null ) {
+        if (imm != null) {
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
         }
     }

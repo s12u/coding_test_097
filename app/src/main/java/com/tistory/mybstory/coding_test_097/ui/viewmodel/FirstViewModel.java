@@ -3,7 +3,8 @@ package com.tistory.mybstory.coding_test_097.ui.viewmodel;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.ObservableField;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.ResultViewModel;
 import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.util.ResultHandler;
@@ -16,9 +17,8 @@ import java9.util.stream.StreamSupport;
 
 public class FirstViewModel extends ResultViewModel<Bundle> {
 
-    private int _balance = 0;
     // an observable field that notifies the balance changes
-    private ObservableField<Integer> balance = new ObservableField<>(0);
+    private MutableLiveData<Integer> balance = new MutableLiveData<>(0);
     private List<Transaction> transactionHistoryList = new ArrayList<>();
 
     public FirstViewModel(ResultHandler<Bundle> resultHandler) {
@@ -42,21 +42,23 @@ public class FirstViewModel extends ResultViewModel<Bundle> {
         performTransaction(transaction);
     }
 
-    public ObservableField<Integer> getBalance() {
-        return balance;
-    }
-
     // check duplicate transaction history & add to history on transaction success
     private void performTransaction(@NonNull Transaction transaction) {
         boolean hasHistory = StreamSupport.stream(transactionHistoryList)
                 .anyMatch(item -> item.equals(transaction));
-        boolean hasBalance = balance.get() != null;
+        boolean hasBalance = balance.getValue() != null;
 
         if (!hasHistory && hasBalance) {
+            int currentBalance = balance.getValue();
             int salePrice = transaction.getSalePrice();
-            _balance = transaction.getSign() ? _balance - salePrice : _balance + salePrice;
-            balance.set(_balance);
+            int result = transaction.getSign() ? currentBalance - salePrice : currentBalance + salePrice;
+            balance.setValue(result);
             transactionHistoryList.add(transaction);
         }
     }
+
+    public LiveData<Integer> getBalance() {
+        return balance;
+    }
+
 }

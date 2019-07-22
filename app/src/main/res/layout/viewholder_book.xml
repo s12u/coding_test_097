@@ -67,19 +67,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.80" />
+                app:layout_constraintGuide_percent="0.76" />
 
             <!-- guide line end -->
 
             <ImageView
                 android:id="@+id/iv_thumb_book"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/bg_img_thumb"
                 android:contentDescription="@string/thumbnail_book"
-                android:scaleType="fitCenter"
                 android:thumbUrl="@{book.thumbUrl}"
+                android:scaleType="fitXY"
+                app:layout_constraintDimensionRatio="3:4"
                 app:layout_constraintTop_toTopOf="@id/gl_horizontal_top"
                 app:layout_constraintBottom_toTopOf="@id/gl_horizontal_bottom"
                 app:layout_constraintEnd_toStartOf="@id/gl_vertical_mid"
@@ -122,6 +123,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/bg_text_strike"
                 android:text="@{@string/format_won(book.price)}"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/label_price" />
 
@@ -131,6 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:text="@{@string/format_won(book.salePrice)}"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/label_sale_price" />
 
@@ -145,21 +148,8 @@
                 app:layout_constraintBottom_toTopOf="@id/tv_publisher"
                 app:layout_constraintStart_toStartOf="@id/gl_vertical_mid"
                 app:layout_constraintEnd_toStartOf="@id/gl_vertical_mid_2"
-                android:text='@{TextUtils.join(", ", book.authors )}'/>
-
-
-
-            <TextView
-                android:id="@+id/tv_translators"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:maxLines="1"
-                android:ellipsize="end"
-                app:layout_constraintStart_toEndOf="@id/tv_authors"
-                app:layout_constraintEnd_toStartOf="@id/gl_vertical_mid_2"
-                app:layout_constraintTop_toTopOf="@id/tv_authors"
-                android:text='@{TextUtils.join(", ", book.translators )}'/>
+                android:text='@{TextUtils.join(", ", book.authors )}'
+                style="@style/LabelStyle.Author"/>
 
             <TextView
                 android:id="@+id/tv_publisher"
@@ -172,7 +162,8 @@
                 app:layout_constraintBottom_toTopOf="@id/gl_horizontal_bottom"
                 app:layout_constraintStart_toStartOf="@id/gl_vertical_mid"
                 app:layout_constraintEnd_toStartOf="@id/gl_vertical_mid_2"
-                android:text='@{book.publisher}'/>
+                android:text='@{book.publisher}'
+                style="@style/LabelStyle.Publisher"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

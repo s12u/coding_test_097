@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * A Data class for http response.
  */
-public class BookRepoResponse {
+public class BookResponse {
 
     @SerializedName("meta")
     private Meta meta;

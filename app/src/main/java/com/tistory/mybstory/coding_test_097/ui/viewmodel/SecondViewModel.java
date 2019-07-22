@@ -30,10 +30,9 @@ public class SecondViewModel extends QueryViewModel {
         Executor fetchExecutor = Executors.newFixedThreadPool(5);
         // paged list config
         PagedList.Config config = new PagedList.Config.Builder()
-                .setEnablePlaceholders(true)
                 .setInitialLoadSizeHint(30)
                 .setPageSize(10)
-//                .setPrefetchDistance(10)
+                .setPrefetchDistance(10)
                 .build();
         // create live data from data source with config
         bookListLiveData = new LivePagedListBuilder<>(new BookDataSourceFactory(apiService, getQuery()), config)

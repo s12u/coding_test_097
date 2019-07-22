@@ -1,13 +1,10 @@
 package com.tistory.mybstory.coding_test_097.ui.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.paging.PagedList;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 

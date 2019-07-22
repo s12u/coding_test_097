@@ -3,7 +3,7 @@
 
     <string name="price">정가</string>
     <string name="sale_price">할인가</string>
-    <string name="my_deposit">나의 잔액</string>
+    <string name="my_balance">나의 잔액</string>
     <string name="format_won">%1d 원</string>
     <string name="error_empty_query">책 이름을 입력하세요</string>
     <string name="thumbnail_book">Book image</string>

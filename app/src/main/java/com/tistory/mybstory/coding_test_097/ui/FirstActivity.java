@@ -29,6 +29,7 @@ public class FirstActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_first);
+        binding.setLifecycleOwner(this);
         // create view model with result handler
         binding.setViewModel(ViewModelProviders
                 .of(this, new ResultViewModelFactory<>(new ResultHandler<>()))
@@ -60,10 +61,11 @@ public class FirstActivity extends BaseActivity {
         // validate empty query
         disposables.add(RxTextView.textChangeEvents(binding.etSearchBook)
                 .skipInitialValue()
-                .subscribe(event -> {
-                            binding.layoutTextInput.setError(event.getText().length() == 0 ?
+                .map(event -> event.getText().toString().trim())
+                .subscribe(text -> {
+                            binding.layoutTextInput.setError(text.length() == 0 ?
                                     getString(R.string.error_empty_query) : "");
-                            binding.btnSearchBook.setEnabled(event.getText().length() != 0);
+                            binding.btnSearchBook.setEnabled(text.length() != 0);
                         }
                 ));
     }

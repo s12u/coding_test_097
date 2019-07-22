@@ -8,7 +8,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.bumptech.glide.Glide;
 import com.tistory.mybstory.coding_test_097.R;
 import com.tistory.mybstory.coding_test_097.base.ui.BaseActivity;
 import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.factory.QueryViewModelFactory;

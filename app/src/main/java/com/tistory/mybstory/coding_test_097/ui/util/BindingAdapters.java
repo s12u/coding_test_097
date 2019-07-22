@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.request.RequestOptions;
 import com.tistory.mybstory.coding_test_097.R;
 
 public class BindingAdapters {
@@ -22,17 +21,16 @@ public class BindingAdapters {
         adapter.submitList(data);
     }
 
+    // binding adapter for thumbnail image view
     @BindingAdapter(value = {"android:thumbUrl"})
     public static void bindThumbImage(ImageView imageView, String thumbUrl) {
-        RequestOptions options = RequestOptions
-                .fitCenterTransform();
-
         Glide.with(imageView)
-                .applyDefaultRequestOptions(options)
+//                .applyDefaultRequestOptions(options)
                 .load(thumbUrl)
                 .placeholder(R.drawable.bg_placeholder_thumb)
                 .error(R.drawable.bg_error_no_image)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(imageView);
     }
+
 }

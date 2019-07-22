@@ -55,6 +55,6 @@ public class Transaction {
 
     // determines transaction's sign (to add or to subtract)
     public boolean getSign() {
-        return price * 0.9 >= salePrice;
+        return price * 0.9 > salePrice;
     }
 }

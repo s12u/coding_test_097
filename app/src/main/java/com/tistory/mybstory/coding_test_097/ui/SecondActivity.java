@@ -4,14 +4,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.BindingAdapter;
+import androidx.appcompat.app.ActionBar;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.paging.PagedList;
-import androidx.paging.PagedListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.tistory.mybstory.coding_test_097.R;
 import com.tistory.mybstory.coding_test_097.base.ui.BaseActivity;
 import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.factory.QueryViewModelFactory;
@@ -27,7 +24,7 @@ public class SecondActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_second);
-        // for LiveData<PagedList<T>>
+        // for observing LiveData<PagedList<T>>
         binding.setLifecycleOwner(this);
         // query from FirstActivity
         String query = getIntent().getStringExtra("query");
@@ -36,28 +33,21 @@ public class SecondActivity extends BaseActivity {
                 .get(SecondViewModel.class));
         // create & add adapter to binding
         binding.setSearchResultAdapter(new SearchResultAdapter(SearchResultAdapter.DIFF_CALLBACK));
-        initUI();
+        initUI(query);
     }
 
-    // binding adapter for recycler view
-    @BindingAdapter(value = {"android:adapter", "android:data"})
-    public static <T, VH extends RecyclerView.ViewHolder> void bind(
-            RecyclerView recyclerView, PagedListAdapter<T, VH> adapter, PagedList<T> data) {
-        recyclerView.setAdapter(adapter);
-        // update recycler view's data from view model
-        adapter.submitList(data);
-    }
-
-    private void initUI() {
-        if (getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+    private void initUI(String query) {
+        ActionBar actionbar = getSupportActionBar();
+        if (actionbar != null) {
+            actionbar.setDisplayHomeAsUpEnabled(true);
+            actionbar.setDisplayShowHomeEnabled(true);
+            actionbar.setTitle(query);
         }
     }
 
     @Override
     public void onBackPressed() {
-        finishWithTransition(0, R.anim.exit_to_bottom);
+        finishWithTransition(0, R.anim.exit_to_right);
     }
 
     @Override

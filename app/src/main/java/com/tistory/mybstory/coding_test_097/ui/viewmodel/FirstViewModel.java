@@ -54,7 +54,7 @@ public class FirstViewModel extends ResultViewModel<Bundle> {
 
         if (!hasHistory && hasBalance) {
             int salePrice = transaction.getSalePrice();
-            _balance = transaction.getSign() ? _balance + salePrice : _balance - salePrice;
+            _balance = transaction.getSign() ? _balance - salePrice : _balance + salePrice;
             balance.set(_balance);
             transactionHistoryList.add(transaction);
         }

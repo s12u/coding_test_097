@@ -15,6 +15,14 @@ public class Book {
     private int price;
     @SerializedName("sale_price")
     private int salePrice;
+    @SerializedName("thumbnail")
+    private String thumbUrl;
+    @SerializedName("authors")
+    private String[] authors;
+    @SerializedName("translators")
+    private String[] translators;
+    @SerializedName("publisher")
+    private String publisher;
 
     public String getTitle() {
         return title;
@@ -47,4 +55,37 @@ public class Book {
     public void setSalePrice(int salePrice) {
         this.salePrice = salePrice;
     }
+
+    public String getThumbUrl() {
+        return thumbUrl;
+    }
+
+    public void setThumbUrl(String thumbUrl) {
+        this.thumbUrl = thumbUrl;
+    }
+
+    public String[] getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(String[] authors) {
+        this.authors = authors;
+    }
+
+    public String[] getTranslators() {
+        return translators;
+    }
+
+    public void setTranslators(String[] translators) {
+        this.translators = translators;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
 }

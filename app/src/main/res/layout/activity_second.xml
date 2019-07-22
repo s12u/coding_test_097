@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View" />
         <import type="androidx.lifecycle.LiveData" />
         <import type="androidx.paging.PagedList" />
         <import type="com.tistory.mybstory.coding_test_097.data.model.Book" />
@@ -29,6 +30,13 @@
             android:orientation="vertical"
             android:adapter="@{searchResultAdapter}"
             android:data="@{viewModel.getBooksList()}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/no_results"
+            android:gravity="center"
+            android:visibility="@{safeUnbox(viewModel.isListEmpty()) ? View.VISIBLE : View.GONE}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

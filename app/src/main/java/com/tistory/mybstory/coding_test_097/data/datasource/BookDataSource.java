@@ -57,7 +57,8 @@ public class BookDataSource extends PageKeyedDataSource<Integer, Book> {
         apiService.requestBookList(AUTH_KEY, QUERY_TARGET, 10, query, page)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
-                    callback.onResult(response.getDocuments(), page + 1);
+                    callback.onResult(response.getDocuments(),
+                            response.getMeta().is_end() ? null : page + 1);
                 }, throwable -> {
 
                 });

@@ -29,6 +29,7 @@ ext {
     lifecycleVersion = '2.2.0-alpha02'
     retrofitVersion = '2.6.0'
     pagingVersion = '2.1.0'
+    glideVersion = '4.9.0'
 }
 
 dependencies {
@@ -39,6 +40,10 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0-beta01'
     implementation 'com.google.android.material:material:1.1.0-alpha08'
     implementation 'com.jakewharton.rxbinding3:rxbinding-core:3.0.0-alpha2'
+
+    // glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 
     // lifecycle & paging
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"

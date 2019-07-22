@@ -16,7 +16,7 @@ import com.tistory.mybstory.coding_test_097.databinding.ViewholderBookBinding;
 
 public class BookViewHolder extends RecyclerView.ViewHolder {
 
-    private ViewholderBookBinding binding;
+    public ViewholderBookBinding binding;
 
     public BookViewHolder(@NonNull ViewholderBookBinding binding) {
         super(binding.getRoot());

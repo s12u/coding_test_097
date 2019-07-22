@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <import type="android.text.TextUtils" />
         <variable
             name="book"
             type="com.tistory.mybstory.coding_test_097.data.model.Book" />
@@ -12,88 +12,167 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_margin="16dp">
+        android:layout_margin="12dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
+        <!-- guide line start -->
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_horizontal_top"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.10"/>
+                app:layout_constraintGuide_percent="0.12" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_horizontal_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.52" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_horizontal_bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.84"/>
+                app:layout_constraintGuide_percent="0.88" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_vertical_start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.04"/>
+                app:layout_constraintGuide_percent="0.04" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_vertical_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.26" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_vertical_mid_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.64" />
+
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_vertical_end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.76"/>
+                app:layout_constraintGuide_percent="0.80" />
+
+            <!-- guide line end -->
+
+            <ImageView
+                android:id="@+id/iv_thumb_book"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_img_thumb"
+                android:contentDescription="@string/thumbnail_book"
+                android:scaleType="fitCenter"
+                android:thumbUrl="@{book.thumbUrl}"
+                app:layout_constraintTop_toTopOf="@id/gl_horizontal_top"
+                app:layout_constraintBottom_toTopOf="@id/gl_horizontal_bottom"
+                app:layout_constraintEnd_toStartOf="@id/gl_vertical_mid"
+                app:layout_constraintStart_toStartOf="@id/gl_vertical_start" />
 
             <TextView
                 android:id="@+id/tv_book_name"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="8dp"
+                android:maxLines="2"
                 android:text='@{book.title.replaceAll("\\(.+?\\)", "")}'
-                android:singleLine="false"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gl_vertical_mid"
                 app:layout_constraintTop_toTopOf="@id/gl_horizontal_top"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"/>
+                app:layout_constraintBottom_toTopOf="@id/gl_horizontal_mid"/>
 
             <TextView
                 android:id="@+id/label_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/price"
                 app:layout_constraintBottom_toTopOf="@id/label_sale_price"
-                app:layout_constraintEnd_toEndOf="@id/gl_vertical_end"
-                android:text="@string/price"/>
+                app:layout_constraintEnd_toEndOf="@id/gl_vertical_end" />
 
             <TextView
                 android:id="@+id/label_sale_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/sale_price"
                 app:layout_constraintBottom_toBottomOf="@id/gl_horizontal_bottom"
-                app:layout_constraintEnd_toEndOf="@id/gl_vertical_end"
-                android:text="@string/sale_price"/>
+                app:layout_constraintEnd_toEndOf="@id/gl_vertical_end" />
 
             <TextView
                 android:id="@+id/tv_book_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/format_won(book.price)}"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/bg_text_strike"
+                android:text="@{@string/format_won(book.price)}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/label_price"
-                android:layout_marginEnd="10dp"/>
+                app:layout_constraintTop_toTopOf="@id/label_price" />
 
             <TextView
                 android:id="@+id/tv_book_sale_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
                 android:text="@{@string/format_won(book.salePrice)}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/label_sale_price"
-                android:layout_marginEnd="10dp"/>
+                app:layout_constraintTop_toTopOf="@id/label_sale_price" />
+
+            <TextView
+                android:id="@+id/tv_authors"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingEnd="4dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintBottom_toTopOf="@id/tv_publisher"
+                app:layout_constraintStart_toStartOf="@id/gl_vertical_mid"
+                app:layout_constraintEnd_toStartOf="@id/gl_vertical_mid_2"
+                android:text='@{TextUtils.join(", ", book.authors )}'/>
+
+
+
+            <TextView
+                android:id="@+id/tv_translators"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintStart_toEndOf="@id/tv_authors"
+                app:layout_constraintEnd_toStartOf="@id/gl_vertical_mid_2"
+                app:layout_constraintTop_toTopOf="@id/tv_authors"
+                android:text='@{TextUtils.join(", ", book.translators )}'/>
+
+            <TextView
+                android:id="@+id/tv_publisher"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingEnd="8dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintBottom_toTopOf="@id/gl_horizontal_bottom"
+                app:layout_constraintStart_toStartOf="@id/gl_vertical_mid"
+                app:layout_constraintEnd_toStartOf="@id/gl_vertical_mid_2"
+                android:text='@{book.publisher}'/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

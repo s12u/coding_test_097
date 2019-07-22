@@ -1,10 +1,13 @@
 package com.tistory.mybstory.coding_test_097.ui.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+import androidx.paging.PagedList;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 
@@ -33,10 +36,18 @@ public class SearchResultAdapter extends PagedListAdapter<Book, BookViewHolder> 
     }
 
     @Override
+    public void onViewRecycled(@NonNull BookViewHolder holder) {
+        super.onViewRecycled(holder);
+        // release resources
+        holder.binding.ivThumbBook.setImageDrawable(null);
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
         holder.bind(getItem(position));
     }
 
+    // diff callback
     public static DiffUtil.ItemCallback<Book> DIFF_CALLBACK = new DiffUtil.ItemCallback<Book>() {
         @Override
         public boolean areItemsTheSame(@NonNull Book oldItem, @NonNull Book newItem) {

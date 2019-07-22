@@ -61,9 +61,9 @@ public class FirstActivity extends BaseActivity {
         disposables.add(RxTextView.textChangeEvents(binding.etSearchBook)
                 .skipInitialValue()
                 .subscribe(event -> {
-                            binding.layoutTextInput.setError(event.getCount() == 0 ?
+                            binding.layoutTextInput.setError(event.getText().length() == 0 ?
                                     getString(R.string.error_empty_query) : "");
-                            binding.btnSearchBook.setEnabled(event.getCount() != 0);
+                            binding.btnSearchBook.setEnabled(event.getText().length() != 0);
                         }
                 ));
     }

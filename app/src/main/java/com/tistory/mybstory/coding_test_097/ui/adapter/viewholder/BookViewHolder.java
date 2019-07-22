@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tistory.mybstory.coding_test_097.R;
 import com.tistory.mybstory.coding_test_097.data.model.Book;
 import com.tistory.mybstory.coding_test_097.databinding.ViewholderBookBinding;
 
@@ -38,6 +39,7 @@ public class BookViewHolder extends RecyclerView.ViewHolder {
                 AppCompatActivity activity = ((AppCompatActivity) view.getContext());
                 activity.setResult(Activity.RESULT_OK, intent);
                 activity.finish();
+                activity.overridePendingTransition(0, R.anim.exit_to_bottom);
             }
         };
     }

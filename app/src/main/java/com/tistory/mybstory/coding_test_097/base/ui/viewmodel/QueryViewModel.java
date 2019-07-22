@@ -1,4 +1,4 @@
-package com.tistory.mybstory.coding_test_097.base.viewmodel;
+package com.tistory.mybstory.coding_test_097.base.ui.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 

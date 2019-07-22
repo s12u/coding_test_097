@@ -1,42 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.FirstActivity">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="viewModel"
             type="com.tistory.mybstory.coding_test_097.ui.viewmodel.FirstViewModel" />
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:onClick="hideKeyboard">
 
-        <EditText
-            android:id="@+id/et_search_book"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_horizontal_top"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.12"/>
 
-        <Button
-            android:id="@+id/btn_search_book"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_horizontal_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.36"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_vertical_start"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.18"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_vertical_end"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.82"/>
+
+        <TextView
+            android:id="@+id/label_my_deposit"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/my_deposit"
+            app:layout_constraintTop_toTopOf="@id/gl_horizontal_top"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_search_book"
-            android:onClick="doSearch"/>
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_search_book"
-            android:text="@{String.valueOf(safeUnbox(viewModel.balance))}"/>
+            app:layout_constraintStart_toStartOf="@id/label_my_deposit"
+            app:layout_constraintTop_toBottomOf="@id/label_my_deposit"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:text="@{@string/format_won(viewModel.balance)}"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_text_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/gl_horizontal_bottom"
+            app:layout_constraintStart_toStartOf="@id/gl_vertical_start"
+            app:layout_constraintEnd_toEndOf="@id/gl_vertical_end"
+            app:errorEnabled="true"
+            app:hintEnabled="false"
+            app:endIconMode="clear_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_search_book"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_book_search"
+                android:inputType="text"
+                android:maxLines="1"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_search_book"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layout_text_input"
+            app:layout_constraintStart_toStartOf="@id/gl_vertical_start"
+            app:layout_constraintEnd_toEndOf="@id/gl_vertical_end"
+            android:enabled="false"
+            android:onClick="doSearch"
+            android:text="@string/search"/>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

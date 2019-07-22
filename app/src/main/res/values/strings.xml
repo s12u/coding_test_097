@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">coding_test_097</string>
+
+    <string name="price">가격</string>
+    <string name="sale_price">할인 가격</string>
+    <string name="my_deposit">나의 잔액</string>
+    <string name="format_won">%1d 원</string>
+    <string name="error_empty_query">Enter the book name</string>
+    <string name="hint_book_search">책 이름 검색</string>
+    <string name="search">검색</string>
 </resources>

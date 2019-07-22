@@ -1,4 +1,4 @@
-package com.tistory.mybstory.coding_test_097.base.viewmodel.util;
+package com.tistory.mybstory.coding_test_097.base.ui.viewmodel.util;
 
 /**
  * A base interface for observing result from {@link ResultHandler}.

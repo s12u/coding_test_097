@@ -1,10 +1,10 @@
-package com.tistory.mybstory.coding_test_097.base.viewmodel.factory;
+package com.tistory.mybstory.coding_test_097.base.ui.viewmodel.factory;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.tistory.mybstory.coding_test_097.base.viewmodel.QueryViewModel;
+import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.QueryViewModel;
 
 import java.lang.reflect.InvocationTargetException;
 

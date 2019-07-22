@@ -53,6 +53,7 @@ public class Transaction {
                 this.salePrice == history.salePrice;
     }
 
+    // determines transaction's sign (to add or to subtract)
     public boolean getSign() {
         return price * 0.9 >= salePrice;
     }

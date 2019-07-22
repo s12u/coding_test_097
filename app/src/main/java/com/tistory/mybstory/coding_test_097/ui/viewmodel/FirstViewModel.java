@@ -5,8 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.tistory.mybstory.coding_test_097.base.viewmodel.ResultViewModel;
-import com.tistory.mybstory.coding_test_097.base.viewmodel.util.ResultHandler;
+import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.ResultViewModel;
+import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.util.ResultHandler;
 import com.tistory.mybstory.coding_test_097.data.model.Transaction;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java9.util.stream.StreamSupport;
 public class FirstViewModel extends ResultViewModel<Bundle> {
 
     private int _balance = 0;
-    // observable field to notifying the balance changes
+    // an observable field that notifies the balance changes
     private ObservableField<Integer> balance = new ObservableField<>(0);
     private List<Transaction> transactionHistoryList = new ArrayList<>();
 

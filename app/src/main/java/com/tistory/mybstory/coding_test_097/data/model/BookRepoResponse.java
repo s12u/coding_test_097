@@ -14,9 +14,6 @@ public class BookRepoResponse {
     @SerializedName("documents")
     private List<Book> documents;
 
-    public BookRepoResponse() {
-    }
-
     public Meta getMeta() {
         return meta;
     }

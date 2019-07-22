@@ -29,7 +29,6 @@ public class BookDataSource extends PageKeyedDataSource<Integer, Book> {
         this.query = query;
     }
 
-
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull final LoadInitialCallback<Integer, Book> callback) {
         final int page = 1;
@@ -41,8 +40,7 @@ public class BookDataSource extends PageKeyedDataSource<Integer, Book> {
                             null,
                             response.getMeta().is_end() ? null : page + 1);
                 }, throwable -> {
-
-
+                    // error
                 });
     }
 
@@ -60,7 +58,7 @@ public class BookDataSource extends PageKeyedDataSource<Integer, Book> {
                     callback.onResult(response.getDocuments(),
                             response.getMeta().is_end() ? null : page + 1);
                 }, throwable -> {
-
+                    // error
                 });
     }
 

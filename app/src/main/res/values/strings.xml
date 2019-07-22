@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">coding_test_097</string>
 
-    <string name="price">정가</string>
+    <string name="price">금액</string>
     <string name="sale_price">할인가</string>
     <string name="my_balance">나의 잔액</string>
     <string name="format_won">%1d 원</string>

@@ -51,7 +51,8 @@ public class FirstViewModel extends ResultViewModel<Bundle> {
         if (!hasHistory && hasBalance) {
             int currentBalance = balance.getValue();
             int salePrice = transaction.getSalePrice();
-            int result = transaction.getSign() ? currentBalance - salePrice : currentBalance + salePrice;
+            int result = transaction.getSign() ?
+                    currentBalance - Math.abs(salePrice) : currentBalance + salePrice;
             balance.setValue(result);
             transactionHistoryList.add(transaction);
         }

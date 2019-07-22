@@ -88,4 +88,8 @@ public class Book {
         this.publisher = publisher;
     }
 
+    public int getTransactionAmount() {
+        return this.price * 0.9 > this.salePrice ?
+                Math.abs(this.salePrice) * -1 : this.salePrice;
+    }
 }

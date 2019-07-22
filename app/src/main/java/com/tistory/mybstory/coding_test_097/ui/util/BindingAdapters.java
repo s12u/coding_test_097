@@ -32,5 +32,4 @@ public class BindingAdapters {
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(imageView);
     }
-
 }

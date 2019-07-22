@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-
     <style name="LabelStyle" parent="Widget.MaterialComponents.TextView"/>
 
     <style name="LabelStyle.Balance">
@@ -25,6 +24,13 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/gray_8</item>
     </style>
+    
+    <style name="TextStyle" parent="Widget.MaterialComponents.TextView"/>
 
+    <style name="TextStyle.TransactionAmount">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 
 </resources>

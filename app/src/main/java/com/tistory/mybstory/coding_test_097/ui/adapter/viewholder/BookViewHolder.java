@@ -28,6 +28,7 @@ public class BookViewHolder extends RecyclerView.ViewHolder {
         binding.getRoot().setOnClickListener(createOnClickListener(book));
     }
 
+    // TODO: move to binding adapter class
     private View.OnClickListener createOnClickListener(Book book) {
         return view -> {
             Context context = view.getContext();

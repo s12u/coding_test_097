@@ -58,7 +58,7 @@
             android:text="@string/my_balance"
             app:layout_constraintTop_toTopOf="@id/gl_horizontal_top"
             app:layout_constraintStart_toStartOf="@id/gl_vertical_start"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+            style="@style/LabelStyle.Balance"/>
 
         <TextView
             android:layout_width="wrap_content"

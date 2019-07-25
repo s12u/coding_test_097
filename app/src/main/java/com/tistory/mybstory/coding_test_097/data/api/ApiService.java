@@ -1,10 +1,9 @@
-package com.tistory.mybstory.coding_test_097.data;
+package com.tistory.mybstory.coding_test_097.data.api;
 
 import com.tistory.mybstory.coding_test_097.data.model.BookResponse;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.Query;
 
 /**
@@ -13,7 +12,6 @@ import retrofit2.http.Query;
 public interface ApiService {
     @GET("v3/search/book")
     Single<BookResponse> requestBookList(
-            @Header("Authorization") String auth,
             @Query("target") String target,
             @Query("size") int size,
             @Query("query") String query,

@@ -3,7 +3,7 @@ package com.tistory.mybstory.coding_test_097.data.datasource.factory;
 import androidx.annotation.NonNull;
 import androidx.paging.DataSource;
 
-import com.tistory.mybstory.coding_test_097.data.ApiService;
+import com.tistory.mybstory.coding_test_097.data.api.ApiService;
 import com.tistory.mybstory.coding_test_097.data.datasource.BookDataSource;
 import com.tistory.mybstory.coding_test_097.data.model.Book;
 

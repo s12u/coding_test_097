@@ -7,14 +7,11 @@ import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
 import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.QueryViewModel;
-import com.tistory.mybstory.coding_test_097.data.ApiService;
 import com.tistory.mybstory.coding_test_097.data.datasource.factory.BookDataSourceFactory;
 import com.tistory.mybstory.coding_test_097.data.model.Book;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-
-import javax.inject.Inject;
 
 public class SecondViewModel extends QueryViewModel {
 

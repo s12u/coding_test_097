@@ -3,8 +3,6 @@ package com.tistory.mybstory.coding_test_097.base.ui.viewmodel;
 import androidx.lifecycle.ViewModel;
 import androidx.paging.DataSource;
 
-import com.tistory.mybstory.coding_test_097.data.ApiService;
-
 import javax.inject.Inject;
 
 /**

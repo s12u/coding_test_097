@@ -1,4 +1,4 @@
-package com.tistory.mybstory.coding_test_097.data;
+package com.tistory.mybstory.coding_test_097.data.api;
 
 import java.util.concurrent.TimeUnit;
 

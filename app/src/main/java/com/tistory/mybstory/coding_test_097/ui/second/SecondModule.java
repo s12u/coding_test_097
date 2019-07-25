@@ -3,10 +3,8 @@ package com.tistory.mybstory.coding_test_097.ui.second;
 import androidx.paging.DataSource;
 
 import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.factory.QueryViewModelFactory;
-import com.tistory.mybstory.coding_test_097.data.ApiService;
-import com.tistory.mybstory.coding_test_097.data.datasource.BookDataSource;
+import com.tistory.mybstory.coding_test_097.data.api.ApiService;
 import com.tistory.mybstory.coding_test_097.data.datasource.factory.BookDataSourceFactory;
-import com.tistory.mybstory.coding_test_097.data.model.Book;
 import com.tistory.mybstory.coding_test_097.ui.adapter.SearchResultAdapter;
 
 import javax.inject.Named;

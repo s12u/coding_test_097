@@ -1,6 +1,7 @@
 package com.tistory.mybstory.coding_test_097.di;
 
-import com.tistory.mybstory.coding_test_097.data.ApiService;
+import com.tistory.mybstory.coding_test_097.data.api.ApiService;
+import com.tistory.mybstory.coding_test_097.data.api.AuthInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,6 +17,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class ApiModule  {
+
+    private final String AUTH_TOKEN = "5c987a8c6d8e160fc0933fd6f4c87293";
 
     @Provides
     @Singleton
@@ -36,10 +39,11 @@ public class ApiModule  {
 
     @Provides
     @Singleton
-    OkHttpClient provideOkHttpClient(HttpLoggingInterceptor interceptor) {
+    OkHttpClient provideOkHttpClient(HttpLoggingInterceptor interceptor, AuthInterceptor authInterceptor) {
         return new OkHttpClient
                 .Builder()
                 .addInterceptor(interceptor)
+                .addInterceptor(authInterceptor)
                 .readTimeout(10, TimeUnit.SECONDS)
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .build();
@@ -51,5 +55,11 @@ public class ApiModule  {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return interceptor;
+    }
+
+    @Provides
+    @Singleton
+    AuthInterceptor provideAuthInterceptor() {
+        return new AuthInterceptor(AUTH_TOKEN);
     }
 }

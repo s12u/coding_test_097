@@ -1,4 +1,4 @@
-package com.tistory.mybstory.coding_test_097.ui;
+package com.tistory.mybstory.coding_test_097.ui.first;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,14 +12,18 @@ import com.jakewharton.rxbinding3.widget.RxTextView;
 import com.tistory.mybstory.coding_test_097.R;
 import com.tistory.mybstory.coding_test_097.base.ui.BaseActivity;
 import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.factory.ResultViewModelFactory;
-import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.util.ResultHandler;
+import com.tistory.mybstory.coding_test_097.data.model.Result;
 import com.tistory.mybstory.coding_test_097.databinding.ActivityFirstBinding;
-import com.tistory.mybstory.coding_test_097.ui.viewmodel.FirstViewModel;
+import com.tistory.mybstory.coding_test_097.ui.second.SecondActivity;
+
+import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 
 public class FirstActivity extends BaseActivity {
 
+    @Inject
+    ResultViewModelFactory factory;
     static final int REQUEST_QUERY_BOOK = 1;
 
     private ActivityFirstBinding binding;
@@ -31,9 +35,13 @@ public class FirstActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_first);
         binding.setLifecycleOwner(this);
         // create view model with result handler
-        binding.setViewModel(ViewModelProviders
-                .of(this, new ResultViewModelFactory<>(new ResultHandler<>()))
+//        binding.setViewModel(ViewModelProviders
+//                .of(this, new ResultViewModelFactory(new ResultHandler()))
+//                .get(FirstViewModel.class));
+
+        binding.setViewModel(ViewModelProviders.of(this, factory)
                 .get(FirstViewModel.class));
+
         initUI();
     }
 
@@ -50,7 +58,7 @@ public class FirstActivity extends BaseActivity {
             if (data != null) {
                 // notify a result (from SecondActivity) to FirstViewModel
                 binding.getViewModel().getResultHandler()
-                        .onResult(data.getExtras());
+                        .onResult(new Result(data.getExtras()));
             } else {
                 // exception (data is null)
             }

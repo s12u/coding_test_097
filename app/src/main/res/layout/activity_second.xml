@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.tistory.mybstory.coding_test_097.ui.viewmodel.SecondViewModel" />
+            type="com.tistory.mybstory.coding_test_097.ui.second.SecondViewModel" />
         <variable
             name="searchResultAdapter"
             type="com.tistory.mybstory.coding_test_097.ui.adapter.SearchResultAdapter" />

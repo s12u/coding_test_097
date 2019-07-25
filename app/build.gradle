@@ -30,6 +30,7 @@ ext {
     retrofitVersion = '2.6.0'
     pagingVersion = '2.1.0'
     glideVersion = '4.9.0'
+    daggerVersion = '2.23.2'
 }
 
 dependencies {
@@ -47,6 +48,7 @@ dependencies {
 
     // lifecycle & paging
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0-alpha02'
     implementation 'androidx.paging:paging-runtime:2.1.0'
 
     // retrofit & plugins
@@ -58,6 +60,12 @@ dependencies {
     // rxjava
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    // dagger
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
     // retrostreams for java streams
     implementation 'net.sourceforge.streamsupport:android-retrostreams:1.7.1'

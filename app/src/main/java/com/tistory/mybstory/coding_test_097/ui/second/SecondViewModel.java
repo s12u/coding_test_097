@@ -1,4 +1,4 @@
-package com.tistory.mybstory.coding_test_097.ui.viewmodel;
+package com.tistory.mybstory.coding_test_097.ui.second;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -6,7 +6,6 @@ import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
 import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.QueryViewModel;
-import com.tistory.mybstory.coding_test_097.data.ApiClient;
 import com.tistory.mybstory.coding_test_097.data.ApiService;
 import com.tistory.mybstory.coding_test_097.data.datasource.factory.BookDataSourceFactory;
 import com.tistory.mybstory.coding_test_097.data.model.Book;
@@ -14,19 +13,21 @@ import com.tistory.mybstory.coding_test_097.data.model.Book;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import javax.inject.Inject;
+
 public class SecondViewModel extends QueryViewModel {
 
     private LiveData<PagedList<Book>> bookListLiveData;
     private MutableLiveData<Boolean> isEmptyLiveData = new MutableLiveData<>(false);
 
-    public SecondViewModel(String query) {
-        super(query);
+    @Inject
+    public SecondViewModel(ApiService apiService, String query) {
+        super(apiService, query);
         init();
     }
 
     // initialize paged list
-    private void init() {
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+    public void init() {
         Executor fetchExecutor = Executors.newFixedThreadPool(5);
         // paged list config
         PagedList.Config config = new PagedList.Config.Builder()
@@ -35,7 +36,7 @@ public class SecondViewModel extends QueryViewModel {
                 .setPrefetchDistance(10)
                 .build();
         // create live data from data source with config
-        bookListLiveData = new LivePagedListBuilder<>(new BookDataSourceFactory(apiService, getQuery()), config)
+        bookListLiveData = new LivePagedListBuilder<>(new BookDataSourceFactory(apiService, query), config)
                 .setBoundaryCallback(new PagedList.BoundaryCallback<Book>() {
                     @Override
                     public void onZeroItemsLoaded() {

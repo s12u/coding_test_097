@@ -24,7 +24,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/gray_8</item>
     </style>
-    
+
     <style name="TextStyle" parent="Widget.MaterialComponents.TextView"/>
 
     <style name="TextStyle.TransactionAmount">

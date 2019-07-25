@@ -13,11 +13,11 @@ import java.lang.reflect.InvocationTargetException;
  * A Factory class for creating {@link ResultViewModel}.
  *
  */
-public class ResultViewModelFactory<T> implements ViewModelProvider.Factory {
+public class ResultViewModelFactory implements ViewModelProvider.Factory {
 
-    protected final ResultHandler<T> resultHandler;
+    protected final ResultHandler resultHandler;
 
-    public ResultViewModelFactory(ResultHandler<T> resultHandler) {
+    public ResultViewModelFactory(ResultHandler resultHandler) {
         this.resultHandler =  resultHandler;
     }
 
@@ -39,4 +39,5 @@ public class ResultViewModelFactory<T> implements ViewModelProvider.Factory {
         }
         throw new IllegalArgumentException("Unknown ViewModel class");
     }
+
 }

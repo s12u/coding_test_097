@@ -1,4 +1,4 @@
-package com.tistory.mybstory.coding_test_097.ui;
+package com.tistory.mybstory.coding_test_097.ui.second;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,26 +12,38 @@ import com.tistory.mybstory.coding_test_097.R;
 import com.tistory.mybstory.coding_test_097.base.ui.BaseActivity;
 import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.factory.QueryViewModelFactory;
 import com.tistory.mybstory.coding_test_097.databinding.ActivitySecondBinding;
+import com.tistory.mybstory.coding_test_097.di.DaggerAppComponent;
 import com.tistory.mybstory.coding_test_097.ui.adapter.SearchResultAdapter;
-import com.tistory.mybstory.coding_test_097.ui.viewmodel.SecondViewModel;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 public class SecondActivity extends BaseActivity {
 
+    @Inject
+    @Named("query")
+    String query;
+    @Inject QueryViewModelFactory factory;
+    @Inject SearchResultAdapter adapter;
     private ActivitySecondBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DaggerAppComponent
+                .builder()
+                .application(getApplication())
+                .build()
+                .queryComponentBuilder()
+                .query(this)
+                .build();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_second);
         // for observing LiveData<PagedList<T>>
         binding.setLifecycleOwner(this);
-        // query from FirstActivity
-        String query = getIntent().getStringExtra("query");
         // create ViewModel with query
-        binding.setViewModel(ViewModelProviders.of(this, new QueryViewModelFactory(query))
-                .get(SecondViewModel.class));
+        binding.setViewModel(ViewModelProviders.of(this, factory).get(SecondViewModel.class));
         // create & add adapter to binding
-        binding.setSearchResultAdapter(new SearchResultAdapter(SearchResultAdapter.DIFF_CALLBACK));
+        binding.setSearchResultAdapter(adapter);
         initUI(query);
     }
 

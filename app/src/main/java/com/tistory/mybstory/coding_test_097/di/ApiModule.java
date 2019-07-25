@@ -19,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiModule  {
 
     private final String AUTH_TOKEN = "5c987a8c6d8e160fc0933fd6f4c87293";
+    private final String BASE_URL = "https://dapi.kakao.com/";
 
     @Provides
     @Singleton
@@ -30,7 +31,7 @@ public class ApiModule  {
     @Singleton
     Retrofit provideRetrofit(OkHttpClient client) {
         return new Retrofit.Builder()
-                .baseUrl("https://dapi.kakao.com/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)

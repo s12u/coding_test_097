@@ -6,6 +6,8 @@ import androidx.paging.PageKeyedDataSource;
 import com.tistory.mybstory.coding_test_097.data.ApiService;
 import com.tistory.mybstory.coding_test_097.data.model.Book;
 
+import javax.inject.Inject;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
@@ -23,7 +25,7 @@ public class BookDataSource extends PageKeyedDataSource<Integer, Book> {
     private final ApiService apiService;
     private final String query;
 
-
+    @Inject
     public BookDataSource(ApiService apiService, String query) {
         this.apiService = apiService;
         this.query = query;

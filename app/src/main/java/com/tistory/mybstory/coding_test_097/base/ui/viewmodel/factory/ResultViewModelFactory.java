@@ -9,6 +9,8 @@ import com.tistory.mybstory.coding_test_097.base.ui.viewmodel.util.ResultHandler
 
 import java.lang.reflect.InvocationTargetException;
 
+import javax.inject.Inject;
+
 /**
  * A Factory class for creating {@link ResultViewModel}.
  *
@@ -17,6 +19,7 @@ public class ResultViewModelFactory implements ViewModelProvider.Factory {
 
     protected final ResultHandler resultHandler;
 
+    @Inject
     public ResultViewModelFactory(ResultHandler resultHandler) {
         this.resultHandler =  resultHandler;
     }

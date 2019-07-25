@@ -2,6 +2,7 @@ package com.tistory.mybstory.coding_test_097.ui.second;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.paging.DataSource;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
@@ -20,14 +21,13 @@ public class SecondViewModel extends QueryViewModel {
     private LiveData<PagedList<Book>> bookListLiveData;
     private MutableLiveData<Boolean> isEmptyLiveData = new MutableLiveData<>(false);
 
-    @Inject
-    public SecondViewModel(ApiService apiService, String query) {
-        super(apiService, query);
+    public SecondViewModel(DataSource.Factory dataSourceFactory) {
+        super(dataSourceFactory);
         init();
     }
 
     // initialize paged list
-    public void init() {
+    private void init() {
         Executor fetchExecutor = Executors.newFixedThreadPool(5);
         // paged list config
         PagedList.Config config = new PagedList.Config.Builder()
@@ -36,7 +36,7 @@ public class SecondViewModel extends QueryViewModel {
                 .setPrefetchDistance(10)
                 .build();
         // create live data from data source with config
-        bookListLiveData = new LivePagedListBuilder<>(new BookDataSourceFactory(apiService, query), config)
+        bookListLiveData = new LivePagedListBuilder<>((BookDataSourceFactory) dataSourceFactory, config)
                 .setBoundaryCallback(new PagedList.BoundaryCallback<Book>() {
                     @Override
                     public void onZeroItemsLoaded() {

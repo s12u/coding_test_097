@@ -1,6 +1,7 @@
 package com.tistory.mybstory.coding_test_097.base.ui.viewmodel;
 
 import androidx.lifecycle.ViewModel;
+import androidx.paging.DataSource;
 
 import com.tistory.mybstory.coding_test_097.data.ApiService;
 
@@ -11,14 +12,13 @@ import javax.inject.Inject;
  */
 public class QueryViewModel extends ViewModel {
 
-    protected String query;
-    protected ApiService apiService;
-
     // Constructor
+
+    protected DataSource.Factory dataSourceFactory;
+
     @Inject
-    public QueryViewModel(ApiService apiService, String query) {
-        this.apiService = apiService;
-        this.query = query;
+    public QueryViewModel(DataSource.Factory dataSourceFactory) {
+        this.dataSourceFactory = dataSourceFactory;
     }
 }
 

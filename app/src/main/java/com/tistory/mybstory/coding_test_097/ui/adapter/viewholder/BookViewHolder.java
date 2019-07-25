@@ -45,4 +45,10 @@ public class BookViewHolder extends RecyclerView.ViewHolder {
         };
     }
 
+    public void unBind() {
+        binding.getRoot().setOnClickListener(null);
+        binding.ivThumbBook.setImageDrawable(null);
+        binding.unbind();
+    }
+
 }

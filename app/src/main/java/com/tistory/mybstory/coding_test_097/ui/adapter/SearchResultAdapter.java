@@ -36,7 +36,7 @@ public class SearchResultAdapter extends PagedListAdapter<Book, BookViewHolder> 
     public void onViewRecycled(@NonNull BookViewHolder holder) {
         super.onViewRecycled(holder);
         // release resources
-        holder.binding.ivThumbBook.setImageDrawable(null);
+        holder.unBind();
     }
 
     @Override

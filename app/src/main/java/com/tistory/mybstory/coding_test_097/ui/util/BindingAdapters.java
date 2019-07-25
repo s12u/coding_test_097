@@ -30,6 +30,7 @@ public class BindingAdapters {
                 .placeholder(R.drawable.bg_placeholder_thumb)
                 .error(R.drawable.bg_error_no_image)
                 .transition(DrawableTransitionOptions.withCrossFade())
-                .into(imageView);
+                .into(imageView)
+                .clearOnDetach();
     }
 }
